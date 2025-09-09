@@ -1,10 +1,10 @@
-package main.java.com.beapiedade.model;
+package com.beapiedade.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-// @Table(name="aluno")
+@Table(name="aluno")
 
 public class Aluno {
 
@@ -38,7 +38,7 @@ public class Aluno {
     }
 
     @Column(name="CURSO")
-    public double getCurso() {	
+    public String getCurso() {	
         return curso;
     }
 
@@ -48,19 +48,19 @@ public class Aluno {
     }
 
     // MÉTODOS SET
-    private void setMatricula(Long matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
-    private void setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    private void setCurso(String curso) {
+    public void setCurso(String curso) {
         this.curso = curso;
     }
 
-    private void setIngresso(LocalDate ingresso) {
+    public void setIngresso(LocalDate ingresso) {
         this.ingresso = ingresso;
     }
 }
