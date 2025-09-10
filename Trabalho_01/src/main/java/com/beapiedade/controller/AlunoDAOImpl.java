@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.LockModeType;
 
+// IMPLEMENTAÇÃO DAS OPERAÇÕES COM A ENTIDADE ALUNO
 public class AlunoDAOImpl implements AlunoDAO {
 	@Override
 	public long inclui(Aluno aluno) {

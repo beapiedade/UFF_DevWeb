@@ -5,6 +5,7 @@ import java.util.List;
 import com.beapiedade.model.Aluno;
 import com.beapiedade.utils.AlunoException;
 
+// CONTRATO DE OPERAÇÕES COM A ENTIDADE ALUNO
 public interface AlunoDAO {
 	long inclui(Aluno aluno);
 	void altera(Aluno aluno) throws AlunoException;

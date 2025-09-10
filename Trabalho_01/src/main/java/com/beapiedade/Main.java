@@ -10,6 +10,7 @@ import com.beapiedade.model.Aluno;
 import com.beapiedade.utils.AlunoException;
 import com.beapiedade.utils.Factory;
 
+// CLASSE PARA CAPTURAR ENTRADAS E EXIBIR O MENU
 public class Main {
     public static void main(String[] args) {
 
@@ -17,7 +18,6 @@ public class Main {
         int opcao;
         Scanner scanner = new Scanner(System.in);
         
-        // ATRIBUTOS DE ALUNO
         Long matricula;
         String nome;
         String curso;
@@ -59,8 +59,8 @@ public class Main {
                     alunoDAO.inclui(aluno);
 
                     System.out.println('\n' + ">>>     Aluno incluído com sucesso!");
-                    System.out.println("matrícula         nome         curso         ingresso");
-                    System.out.printf("%-15s %-15s %-15s %-15s%n", aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getIngresso());
+                    System.out.println("matrícula       nome                   curso                   ingresso");
+                    System.out.printf("%-15s %-22s %-23s %-20s%n", aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getIngresso());
                     break;
 
                 case 2:
@@ -77,9 +77,9 @@ public class Main {
                         break;
                     }
 
-                    System.out.println("matrícula         nome         curso         ingresso");
-                    System.out.printf("%-15s %-15s %-15s %-15s%n", aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getIngresso());
-                    
+                    System.out.println("matrícula       nome                   curso                   ingresso");
+                    System.out.printf("%-15s %-22s %-23s %-20s%n", aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getIngresso());
+
                     int opcaoAlteracao = 0;
                     System.out.println('\n' + "Selecione o que deseja alterar:");
                     System.out.println('\n' + "1. Nome");
@@ -137,9 +137,9 @@ public class Main {
                         break;
                     }
 
-                    System.out.println("matrícula         nome         curso         ingresso");
-                    System.out.printf("%-15s %-15s %-15s %-15s%n", aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getIngresso());
-                 
+                    System.out.println("matrícula       nome                   curso                   ingresso");
+                    System.out.printf("%-15s %-22s %-23s %-20s%n", aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getIngresso());
+
                     break;
 
                 case 4:
@@ -156,9 +156,9 @@ public class Main {
                         break;
                     }
 
-                    System.out.println("matrícula         nome         curso         ingresso");
-                    System.out.printf("%-15s %-15s %-15s %-15s%n", aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getIngresso());
-                    
+                    System.out.println("matrícula       nome                   curso                   ingresso");
+                    System.out.printf("%-15s %-22s %-23s %-20s%n", aluno.getMatricula(), aluno.getNome(), aluno.getCurso(), aluno.getIngresso());
+
                     int opcaoRemocao = 0;
                     System.out.println('\n' + "Confirma a remoção desse aluno?");
                     System.out.println('\n' + "0. Não");
@@ -191,10 +191,10 @@ public class Main {
                     
                     List<Aluno> alunos = alunoDAO.lista();
 
-                    System.out.println("matrícula         nome         curso         ingresso");
-                    
+                    System.out.println("matrícula       nome                   curso                   ingresso");
+
 					for (Aluno temp_aluno : alunos) {
-						System.out.printf("%-15s %-15s %-15s %-15s%n", temp_aluno.getMatricula(), temp_aluno.getNome(), temp_aluno.getCurso(), temp_aluno.getIngresso());
+						System.out.printf("%-15s %-22s %-23s %-20s%n", temp_aluno.getMatricula(), temp_aluno.getNome(), temp_aluno.getCurso(), temp_aluno.getIngresso());
 					}
                     
                     break;

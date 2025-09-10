@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
+// RESPONSÁVEL POR CENTRALIZAR A CRIAÇÃO DO ENTITYMANAGER E DOS DAOS
 public class Factory {	
 	private static Factory fabrica = null;
 	private EntityManagerFactory entityManagerFactory = null;

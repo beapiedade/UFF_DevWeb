@@ -3,18 +3,17 @@ package com.beapiedade.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+// ENTIDADE PRINCIPAL DO PROJETO
 @Entity
 @Table(name="aluno")
 
 public class Aluno {
 
-    // ATRIBUTOS
     private Long matricula;
     private String nome;
     private String curso;
     private LocalDate ingresso;
 
-    // CONSTRUTORES
     public Aluno() {}
 
     public Aluno(String nome, String curso, LocalDate ingresso) {
@@ -23,7 +22,6 @@ public class Aluno {
         this.ingresso = ingresso;
     }
 
-    // MÉTODOS GET
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 
@@ -47,7 +45,6 @@ public class Aluno {
         return ingresso;
     }
 
-    // MÉTODOS SET
     public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
