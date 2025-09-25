@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="85914457-40c1-4bb5-bad0-26dd44983c5a" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabalho_01/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabalho_01/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabalho_01/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabalho_01/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabalho_01/src/main/java/com/beapiedade/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Projeto/src/main/java/com/beapiedade/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/UFF_DevWeb.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Trabalho_01" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Projeto" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -50,7 +50,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Beatriz.LENOVOBEATRIZ\Workspace\UFF_DevWeb\Trabalho_01\src\main\java\com\beapiedade" />
+      <recent name="C:\Users\Beatriz.LENOVOBEATRIZ\Workspace\UFF_DevWeb\Projeto\src\main\java\com\beapiedade" />
     </key>
   </component>
   <component name="SharedIndexes">
