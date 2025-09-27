@@ -1,7 +1,5 @@
 # Desenvolvimento Web
 
-- Get-Content .\banco_de_dados.sql | mysql -u root -p db
-
 ## Trabalho 01
 
 - ```Main:``` Classe para capturar entradas e exibir o menu;
@@ -13,3 +11,21 @@
 
 ## Trabalho 02
 
+- ```ProjetoApplication``` <br> <br>
+- Controller <br>
+    - ```AlunoController``` <br>
+    - ```InscricaoController``` <br>
+    - ```ProfessorController``` <br>
+    - ```TurmaController``` <br> <br>
+- Model <br>
+    - ```Aluno``` <br>
+    - ```Inscricao``` <br>
+    - ```InscricaoDTO``` <br>
+    - ```Professor``` <br>
+    - ```Turma``` <br>
+    - ```TurmaDTO``` <br> <br>
+- Repository <br>
+    - ```AlunoRepository``` <br>
+    - ```InscricaoRepository``` <br>
+    - ```ProfessorRepository``` <br>
+    - ```TurmaRepository``` <br>
