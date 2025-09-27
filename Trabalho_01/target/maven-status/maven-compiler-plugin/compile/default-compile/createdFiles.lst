@@ -1,0 +1,6 @@
+com\beapiedade\utils\Factory.class
+com\beapiedade\Main.class
+com\beapiedade\utils\AlunoException.class
+com\beapiedade\controller\AlunoDAOImpl.class
+com\beapiedade\model\Aluno.class
+com\beapiedade\controller\AlunoDAO.class
