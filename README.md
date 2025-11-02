@@ -29,3 +29,8 @@
     - ```InscricaoRepository``` <br>
     - ```ProfessorRepository``` <br>
     - ```TurmaRepository``` <br>
+
+## Trabalho 04
+
+- mvn spring-boot:run
+- npm run dev
