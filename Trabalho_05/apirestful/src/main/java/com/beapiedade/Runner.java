@@ -1,6 +1,5 @@
 package com.beapiedade;
 
-import com.beapiedade.controller.*;
 import com.beapiedade.model.*;
 import com.beapiedade.repository.*;
 

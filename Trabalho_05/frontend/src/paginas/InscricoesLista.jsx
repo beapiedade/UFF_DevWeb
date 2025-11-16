@@ -9,10 +9,13 @@ const fetchTurmas = async () => {
   return res.json();
 };
 
-const fetchAlunos = async () => {
-  const res = await fetch('/api/aluno');
+const fetchTurma = async ({ queryKey }) => {
+  const [_key, turmaId] = queryKey; 
+  if (!turmaId) return null;
+  
+  const res = await fetch(`/api/turma/${turmaId}`);
   if (!res.ok) {
-    throw new Error('Não foi possível carregar os alunos.');
+    throw new Error(`Não foi possível carregar os detalhes da turma.`);
   }
   return res.json();
 };
@@ -41,7 +44,7 @@ function InscricoesLista() {
   const [grupo, setGrupo] = useState(new Set()); 
 
   const { data: turmas, isLoadingTurmas, errorTurmas } = useQuery({ queryKey: ['turmas'], queryFn: fetchTurmas });
-  const { data: alunos, isLoadingAlunos, errorAlunos } = useQuery({ queryKey: ['alunos'], queryFn: fetchAlunos });
+  const { data: selectedTurma, isLoadingAlunos, errorAlunos } = useQuery({ queryKey: ['turma', selectedTurmaId], queryFn: fetchTurma, enabled: !!selectedTurmaId });
 
   useEffect(() => {
     const grupoSalvo = getGrupoFromStorage(selectedTurmaId);
@@ -96,10 +99,10 @@ function InscricoesLista() {
           </tr>
         </thead>
         <tbody>
-          {selectedTurmaId && (isLoadingAlunos ? (
-            <tr><td colSpan="4">Carregando alunos...</td></tr>
-          ) : (
-            alunos?.map(aluno => {
+          {isLoadingAlunos ? ( <tr><td colSpan="4">Carregando alunos da turma...</td></tr> ) : selectedTurma && selectedTurma.inscricoes.length > 0 ? (
+            
+            selectedTurma.inscricoes.map(inscricao => {
+              const aluno = inscricao.aluno;
               const estaNoGrupo = grupo.has(aluno.id);
 
               return (
@@ -115,12 +118,12 @@ function InscricoesLista() {
                 </tr>
               );
             })
-          ))}
 
-          {selectedTurmaId && !isLoadingAlunos && !alunos?.length && (
-             <tr>
-               <td colSpan="4">Nenhum aluno cadastrado no sistema.</td>
-             </tr>
+          ) : selectedTurmaId ? (
+            <tr><td colSpan="4">Nenhum aluno inscrito nesta turma.</td></tr>
+
+          ) : (
+            <tr></tr>
           )}
         </tbody>
       </table>
