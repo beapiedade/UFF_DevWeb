@@ -1,8 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router-dom";
-import { set, z } from "zod";
+import { useNavigate } from "react-router-dom";
+import { z } from "zod";
 import useAlterarAluno from "../hooks/useAlterarAluno";
 import useCadastrarAluno from "../hooks/useCadastrarAluno";
 import useAlunoStore from "../stores/useAlunoStore";
@@ -14,7 +14,7 @@ const schema = z.object({
   ingresso: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, { message: "Deve estar no formato AAAA-MM-DD."}),
 });
 
-const AlunoForm = ({ aluno }) => {
+const AlunoForm = () => {
   const novoAluno = useAlunoStore((state) => state.alunoSelecionado);
   const cadastrarAluno = useCadastrarAluno();
   const alterarAluno = useAlterarAluno();
@@ -26,10 +26,7 @@ const AlunoForm = ({ aluno }) => {
     formState: { errors, isSubmitting },
     reset,
     setValue,
-  } = useForm({
-    resolver: zodResolver(schema),
-    defaultValues: aluno || {}, 
-  });
+  } = useForm({resolver: zodResolver(schema)});
 
   useEffect(() => {
     inicializarFormulario();

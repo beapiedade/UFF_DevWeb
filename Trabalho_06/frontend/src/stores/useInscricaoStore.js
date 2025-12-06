@@ -1,32 +1,45 @@
 import { create } from "zustand";
 
 const useInscricaoStore = create((set) => ({
-  disciplinaId: undefined,
-  turmaId: undefined,
-  alunoId: undefined,
-  termoBusca: "",
-  pagina: 0,
+  disciplinaId: null,
+  turmaId: null,
+  alunoId: null,
+
+  page: 1,
+  pageSize: 5,
+  searchTerm: "",
 
   setDisciplinaId: (id) =>
-    set({
+    set((s) => ({
       disciplinaId: id,
-      turmaId: undefined,
-      alunoId: undefined,
-      pagina: 0,
-      termoBusca: "",
-    }),
+      turmaId: null,
+      alunoId: null,
+      page: 1,
+      searchTerm: "",
+    })),
 
   setTurmaId: (id) =>
-    set({
+    set((s) => ({
       turmaId: id,
-      alunoId: undefined,
-      pagina: 0,
-      termoBusca: "",
-    }),
+      alunoId: null,
+      page: 1,
+      searchTerm: "",
+    })),
 
   setAlunoId: (id) => set({ alunoId: id }),
-  setTermoBusca: (termo) => set({ termoBusca: termo, pagina: 0 }),
-  setPagina: (pagina) => set({ pagina: pagina }),
+  setPage: (page) => set({ page }),
+  setPageSize: (size) => set({ pageSize: size, page: 1 }),
+  setSearchTerm: (term) => set({ searchTerm: term, page: 1 }),
+
+  resetAll: () =>
+    set({
+      disciplinaId: null,
+      turmaId: null,
+      alunoId: null,
+      page: 1,
+      pageSize: 5,
+      searchTerm: "",
+    }),
 }));
 
 export default useInscricaoStore;

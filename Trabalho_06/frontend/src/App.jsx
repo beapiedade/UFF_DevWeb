@@ -8,6 +8,7 @@ import BuscaInscricoes from './paginas/BuscaInscricoes';
 import TurmaPage from './paginas/TurmaPage';
 import AlunoPage from './paginas/AlunoPage';
 import CadastroDeAlunosPage from './paginas/CadastroDeAlunosPage';
+import InscricaoDeAlunosPage from './paginas/InscricaoDeAlunosPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="inscricoes-busca" element={<BuscaInscricoes />} />
         <Route path="novo-aluno" element={<CadastroDeAlunosPage />} />
         <Route path="aluno/:id" element={<AlunoPage />} />
+        <Route path="nova-inscricao" element={<InscricaoDeAlunosPage />} />
       </Route>
     </Routes>
   )

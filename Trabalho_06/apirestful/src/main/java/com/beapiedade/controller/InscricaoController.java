@@ -57,7 +57,7 @@ public class InscricaoController {
         Inscricao inscricao = new Inscricao();
         inscricao.setAluno(aluno);
         inscricao.setTurma(turma);
-        inscricao.setDataHora(LocalDate.now());
+        inscricao.setDataHora(inscricaoDTO.getDataHora());
 
         Inscricao novaInscricao = inscricaoRepository.save(inscricao);
         return ResponseEntity.ok(novaInscricao);

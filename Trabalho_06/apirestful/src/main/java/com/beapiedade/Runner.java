@@ -113,7 +113,9 @@ public class Runner implements CommandLineRunner {
                 new String[]{"2022", "1", "1", "3", "A030"},
                 new String[]{"2022", "1", "2", "3", "A031"},
                 new String[]{"2023", "1", "1", "2", "B020"},
-                new String[]{"2023", "2", "3", "1", "B010"}
+                new String[]{"2023", "2", "3", "2", "B021"},
+                new String[]{"2023", "2", "2", "1", "C010"},
+                new String[]{"2024", "1", "1", "1", "C011"}
             );
             for (String[] dadosTurma : dadosTurmas) {
                 Turma novaTurma = new Turma(
@@ -140,17 +142,21 @@ public class Runner implements CommandLineRunner {
                 new String[]{"1", "A030", "2025-09-01"},
                 new String[]{"1", "B020", "2025-09-02"},
                 new String[]{"2", "A031", "2025-09-03"},
+                new String[]{"2", "C011", "2025-09-03"},
                 new String[]{"3", "A030", "2025-09-04"},
-                new String[]{"3", "B020", "2025-09-05"},
+                new String[]{"3", "B021", "2025-09-05"},
                 new String[]{"4", "B020", "2025-09-06"},
                 new String[]{"5", "A031", "2025-09-07"},
                 new String[]{"6", "A030", "2025-09-08"},
+                new String[]{"6", "C011", "2025-09-08"},
                 new String[]{"7", "A030", "2025-09-09"},
                 new String[]{"7", "A031", "2025-09-09"},
                 new String[]{"8", "A030", "2025-09-10"},
                 new String[]{"9", "A030", "2025-09-11"},
                 new String[]{"9", "A031", "2025-09-11"},
-                new String[]{"10", "A030", "2025-09-12"}
+                new String[]{"9", "C010", "2025-09-03"},
+                new String[]{"10", "A030", "2025-09-12"},
+                new String[]{"10", "C010", "2025-09-12"}
             );
             for (String[] dadosInscricao : dadosInscricoes) {
                 Inscricao novaInscricao = new Inscricao(
