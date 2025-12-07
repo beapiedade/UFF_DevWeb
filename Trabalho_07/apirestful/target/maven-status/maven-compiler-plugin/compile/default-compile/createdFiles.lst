@@ -1,0 +1,17 @@
+com\beapiedade\model\Turma.class
+com\beapiedade\model\Aluno.class
+com\beapiedade\repository\InscricaoRepository.class
+com\beapiedade\model\Professor.class
+com\beapiedade\controller\InscricaoController.class
+com\beapiedade\model\InscricaoDTO.class
+com\beapiedade\repository\AlunoRepository.class
+com\beapiedade\model\TurmaDTO.class
+com\beapiedade\controller\TurmaController.class
+com\beapiedade\repository\DisciplinaRepository.class
+com\beapiedade\controller\ProfessorController.class
+com\beapiedade\controller\AlunoController.class
+com\beapiedade\model\Inscricao.class
+com\beapiedade\repository\TurmaRepository.class
+com\beapiedade\controller\DisciplinaController.class
+com\beapiedade\repository\ProfessorRepository.class
+com\beapiedade\model\Disciplina.class
