@@ -35,7 +35,11 @@ const CadastroForm = () => {
     cadastrar.mutate(data, {
       onSuccess: () => {
         alert("Usuário cadastrado!");
-        navigate("/login");
+        if (usuarioEhAdmin) {
+          navigate("/usuarios")
+        } else {
+          navigate("/login");
+        }
       },
       onError: (error) => {
         alert(error.message);
@@ -49,19 +53,19 @@ const CadastroForm = () => {
         <div>
           <label>Nome</label>
           <input {...register("nome") } className="form-control" />
-          {errors.nome && <div>{errors.nome.message}</div>}
+          {errors.nome && <div className="formulario-erro">{errors.nome.message}</div>}
         </div>
 
         <div>
           <label>Email</label>
           <input {...register("email")} className="form-control" />
-          {errors.email && <div>{errors.email.message}</div>}
+          {errors.email && <div className="formulario-erro">{errors.email.message}</div>}
         </div>
 
         <div>
           <label>Senha</label>
           <input type="password" {...register("senha")} className="form-control" />
-          {errors.senha && <div>{errors.senha.message}</div>}
+          {errors.senha && <div className="formulario-erro">{errors.senha.message}</div>}
         </div>
 
         {usuarioEhAdmin && (

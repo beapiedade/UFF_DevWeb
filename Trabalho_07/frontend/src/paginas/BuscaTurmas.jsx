@@ -2,33 +2,40 @@ import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import Paginacao from '../componentes/Paginacao';
+import useFetchWithAuth from "../hooks/useFetchWithAuth";
+import useTokenStore from '../stores/useTokenStore';
 
 const ALUNOS_POR_PAGINA = 5;
-
-const fetchAllTurmas = async () => {
-  const response = await fetch('/api/turma');
-  if (!response.ok) {
-    throw new Error(`Erro HTTP: ${response.status}`);
-  }
-  return response.json();
-};
-
-const fetchTurmaDetails = async ({ queryKey }) => {
-  const [_key, turmaId] = queryKey;
-  const response = await fetch(`/api/turma/${turmaId}`);
-  if (!response.ok) {
-    throw new Error(`Erro HTTP: ${response.status}`);
-  }
-  return response.json();
-};
 
 function BuscaTurmas() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTurmaId, setSelectedTurmaId] = useState(null);
 
-  const { data: allTurmas, isLoadingTurmas, errorTurmas } = useQuery({ queryKey: ['turmas'], queryFn: fetchAllTurmas});
-  const { data: selectedTurma, isLoadingDetalhes, errorDetalhes } = useQuery({ queryKey: ['turma', selectedTurmaId], queryFn: fetchTurmaDetails, enabled: !!selectedTurmaId });
+  const { fetchWithAuth } = useFetchWithAuth();
+  const tokenResponse = useTokenStore((s) => s.tokenResponse);
+  const isAuthenticated = tokenResponse.token !== "";
+
+  const { data: allTurmas, isLoading: isLoadingTurmas, error: errorTurmas } = useQuery({ 
+    queryKey: ['turmas'], 
+    queryFn: async () => {
+      const response = await fetchWithAuth(`http://localhost:8080/api/turma/`);
+      const dados = await response.json();
+      return dados || [];
+    },
+    enabled: isAuthenticated, 
+    staleTime: 5 * 60 * 1000,
+  });
+
+  const { data: selectedTurma, isLoading: isLoadingDetalhes, error: errorDetalhes } = useQuery({ 
+    queryKey: ['turma', selectedTurmaId], 
+    queryFn: async () => {
+      const response = await fetchWithAuth(`http://localhost:8080/api/turma/${selectedTurmaId}`);
+      const dados = await response.json();
+      return dados || [];
+    },
+    enabled: !!selectedTurmaId && isAuthenticated, 
+  });
 
   const filteredTurmas = useMemo(() => {
     if (!searchQuery) {
@@ -57,6 +64,7 @@ function BuscaTurmas() {
   const totalAlunos = selectedTurma?.inscricoes?.length || 0;
   const indexUltimoAluno = currentPage * ALUNOS_POR_PAGINA;
   const indexPrimeiroAluno = indexUltimoAluno - ALUNOS_POR_PAGINA;
+
   const alunosPaginados = selectedTurma?.inscricoes?.slice(
     indexPrimeiroAluno,
     indexUltimoAluno
@@ -64,8 +72,9 @@ function BuscaTurmas() {
 
   const error = errorTurmas || errorDetalhes;
 
-  if (isLoadingTurmas) return <p>Carregando...</p>;
-  if (error) return <p>{error}</p>;
+  if (!isAuthenticated) return <p>É necessário estar logado para acessar a Gerência de Turmas.</p>; 
+  if (isLoadingTurmas) return <p>Carregando turmas...</p>;
+  if (error) return <p>Erro ao carregar dados: {error.message || 'Erro desconhecido'}</p>;
 
   return (
     <div>

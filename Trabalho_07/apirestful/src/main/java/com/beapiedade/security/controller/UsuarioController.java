@@ -36,7 +36,6 @@ public class UsuarioController {
 
     @PostMapping("/admin")
     public InfoUsuario cadastrarAdmin(@RequestBody @Valid Usuario usuario) {
-        usuario.setRole(Role.ADMIN);
         return usuarioService.cadastrarUsuarioAdmin(usuario);
     }
 }

@@ -10,7 +10,7 @@ const useApi = (endpoint) => {
       if (error) throw error;
 
       throw new Error(
-        "Erro desconhecido: " + " - Status code: " + response.status
+        "Erro " + response.status
       );
     }
     const text = await response.text();
@@ -46,8 +46,13 @@ const useApi = (endpoint) => {
       if (erro && typeof erro === "object") {
         throw new Error(Object.values(erro).join("\n"));
       }
+      if (response.status === 401) {
+        throw new Error("Necessário estar autenticado para acessar este recurso.");
+      }
 
-      throw new Error("Erro ao salvar aluno.");
+      if (response.status === 403) {
+        throw new Error("Você não tem permissão para acessar este recurso.");
+      }
     }
 
     return await handleResponse(response);
@@ -82,8 +87,21 @@ const useApi = (endpoint) => {
     const response = await fetchWithAuth(`${URL}/${id}`, {
       method: "DELETE",
     });
+    
+    if (response.status === 401) {
+      throw new Error("Necessário estar autenticado para acessar este recurso.");
+    }
+
+    if (response.status === 403) {
+      throw new Error("Você não tem permissão para acessar este recurso.");
+    }
+
+    if (!response.ok) {
+      throw new Error("Erro ao excluir aluno.");
+    }
+
     return await handleResponse(response);
-  };
+};
 
   return {
     get,

@@ -36,8 +36,10 @@ const InscricaoForm = () => {
         reset();
       },
       onError: (err) => {
-        console.error(err);
         alert("Erro ao inscrever aluno: " + err.message);
+        if (err.status === 401) {
+          navigate("/login");
+        }
       }
     });
   };

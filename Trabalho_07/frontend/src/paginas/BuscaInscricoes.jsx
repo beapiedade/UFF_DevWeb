@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useApi from '../hooks/useApi';
-
-const fetchTurmas = async () => {
-  const res = await fetch('/api/turma');
-  if (!res.ok) {
-    throw new Error('Não foi possível carregar as turmas.');
-  }
-  return res.json();
-};
+import useTokenStore from '../stores/useTokenStore';  
 
 const getGrupoFromStorage = (turmaId) => {
   if (!turmaId) return new Set();
@@ -33,9 +26,10 @@ function BuscaInscricoes() {
   const {get, getAll} = useApi('turma');
   const [selectedTurmaId, setSelectedTurmaId] = useState('');
   const [grupo, setGrupo] = useState(new Set()); 
+  const token = useTokenStore((state) => state.token);
 
   const { data: turmas, isLoadingTurmas, errorTurmas } = useQuery({ queryKey: ['turmas'], queryFn: getAll });
-  const { data: selectedTurma, isLoadingAlunos, errorAlunos } = useQuery({ queryKey: ['turma', selectedTurmaId], queryFn: get(selectedTurmaId), enabled: !!selectedTurmaId });
+  const { data: selectedTurma, isLoadingAlunos, errorAlunos } = useQuery({ queryKey: ['turma', selectedTurmaId], queryFn:  () => get(selectedTurmaId), enabled: !!selectedTurmaId });
 
   useEffect(() => {
     const grupoSalvo = getGrupoFromStorage(selectedTurmaId);

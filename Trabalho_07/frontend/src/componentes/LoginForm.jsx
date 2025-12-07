@@ -24,6 +24,10 @@ const LoginForm = () => {
   useEffect(() => {
     setTokenResponse({ idUsuario: 0, token: "", nome: "", role: "" });
 
+    if (location.state?.msg) {
+        setMsg(location.state.msg);
+        setLoginInvalido(true);
+    }
     return () => {
       setLoginInvalido(false);
       setMsg("");

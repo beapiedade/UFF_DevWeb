@@ -11,12 +11,9 @@ const useDeletarAluno = () => {
         method: "DELETE",
       });
 
-      if (resp.status === 403) {
-        throw new Error("Necessário estar autenticado para acessar este recurso.");
-      }
-
+      
       if (!resp.ok) {
-        throw new Error("Erro ao excluir aluno.");
+        throw new Error(resp.status);
       }
 
       return true;

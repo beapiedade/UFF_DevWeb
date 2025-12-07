@@ -12,16 +12,6 @@ const useCadastrarAluno = () => {
       queryClient.invalidateQueries({ queryKey: ["alunos"] });
       return aluno;
     },
-
-    onError: (error) => {
-      let mensagem = "Erro ao cadastrar aluno.";
-
-      if (error instanceof Error && error.message) {
-        mensagem = error.message;
-      }
-
-      alert(mensagem);
-    }
   });
 
   return mutate;

@@ -53,8 +53,10 @@ const AlunoForm = () => {
             navigate(`/aluno/${alunoAlterado.id}`);
           },
           onError: (error) => {
-            console.error("Erro ao alterar aluno:", error);
             alert("Erro ao alterar aluno: " + error.message);
+            if (error.message === "Necessário estar autenticado para acessar este recurso.") {
+              navigate("/login");
+            }
           },
         }
       );
@@ -65,8 +67,10 @@ const AlunoForm = () => {
           navigate(`/aluno/${alunoCadastrado.id}`);
         },
         onError: (error) => {
-          console.error("Erro ao cadastrar aluno:", error);
           alert("Erro ao cadastrar aluno: " + error.message);
+          if (error.message === "Necessário estar autenticado para acessar este recurso.") {
+            navigate("/login");
+          }
         },
       });
     }

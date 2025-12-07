@@ -25,17 +25,10 @@ public class UsuarioService {
     }
 
     public InfoUsuario cadastrarUsuarioPublico(Usuario usuario) {
-        usuario.setRole(Role.USER);
         return cadastrar(usuario);
     }
 
     public InfoUsuario cadastrarUsuarioAdmin(Usuario usuario) {
-        usuario.setRole(Role.ADMIN);
-        return cadastrar(usuario);
-    }
-
-    public InfoUsuario cadastrarUsuarioUser(Usuario usuario) {
-        usuario.setRole(Role.USER);
         return cadastrar(usuario);
     }
 

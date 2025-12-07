@@ -2,28 +2,24 @@ import React, { useMemo, useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useInscricaoStore from "../stores/useInscricaoStore";
 import Paginacao from "../componentes/Paginacao";
+import useFetchWithAuth from "../hooks/useFetchWithAuth";
 
 const ALUNOS_POR_PAGINA = 5;
-
-const fetchAlunosInscritos = async ({ queryKey }) => {
-  const [_key, turmaId] = queryKey;
-  const response = await fetch(`/api/turma/${turmaId}`);
-  if (!response.ok) {
-    throw new Error(`Erro HTTP: ${response.status}`);
-  }
-  const dados = await response.json();
-  return dados.inscricoes || [];
-};
 
 function TabelaDeAlunosPorTurma() {
   const turmaId = useInscricaoStore((s) => s.turmaId);
   const filtroNome = useInscricaoStore((s) => s.searchTerm);
   const setFiltroNome = useInscricaoStore((s) => s.setSearchTerm);
 
-   console.log("Fetching inscritos for turmaId:", turmaId);
+  const { fetchWithAuth } = useFetchWithAuth();
+
   const { data: inscritos = [], isLoading } = useQuery({
     queryKey: ["alunosInscritos", turmaId],
-    queryFn: fetchAlunosInscritos,
+    queryFn: async () => {
+      const response = await fetchWithAuth(`http://localhost:8080/api/turma/${turmaId}`);
+      const dados = await response.json();
+      return dados.inscricoes || [];
+    },
     enabled: turmaId != null
   });
 
